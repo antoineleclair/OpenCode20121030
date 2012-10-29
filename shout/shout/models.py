@@ -1,7 +1,8 @@
 from sqlalchemy import (
     Column,
     Integer,
-    Text,
+    Unicode,
+    DateTime,
     )
 
 from sqlalchemy.ext.declarative import declarative_base
@@ -13,16 +14,17 @@ from sqlalchemy.orm import (
 
 from zope.sqlalchemy import ZopeTransactionExtension
 
+from datetime import datetime
+
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
 Base = declarative_base()
 
-class MyModel(Base):
-    __tablename__ = 'models'
+class Broadcast(Base):
+    __tablename__ = 'broadcasts'
     id = Column(Integer, primary_key=True)
-    name = Column(Text, unique=True)
-    value = Column(Integer)
+    content = Column(Unicode)
+    created = Column(DateTime, default=datetime.now)
 
-    def __init__(self, name, value):
-        self.name = name
-        self.value = value
+    def __init__(self, content):
+        self.contet = content
 
