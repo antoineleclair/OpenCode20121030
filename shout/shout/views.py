@@ -10,4 +10,8 @@ from .models import (
 
 @view_config(route_name='home', renderer='home.mako')
 def home(request):
-    return {'broadcasts': []}    
+    if (request.method == 'POST'):
+        broadcast = Broadcast(request.params.get('content', ''))
+        DBSession.add(broadcast)
+    broadcasts = DBSession.query(Broadcast).all()
+    return {'broadcasts': broadcasts}

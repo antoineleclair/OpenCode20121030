@@ -9,7 +9,7 @@ from pyramid.paster import (
     setup_logging,
     )
 
-from ..models import (
+from shout.models import (
     DBSession,
     Base,
     )
@@ -28,4 +28,4 @@ def main(argv=sys.argv):
     settings = get_appsettings(config_uri)
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
-    Base.metadata.create_all(engine)    
+    Base.metadata.create_all(engine)

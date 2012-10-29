@@ -26,5 +26,5 @@ class Broadcast(Base):
     created = Column(DateTime, default=datetime.now)
 
     def __init__(self, content):
-        self.contet = content
+        self.content = content
 
