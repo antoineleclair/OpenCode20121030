@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Installing packages"
+date
+
+# install packages
+virtualenv env
+env/bin/pip install -r requirements.txt
+
+echo "Done installing packages. Starting worker."
+
+# run worker
+env/bin/python worker.py

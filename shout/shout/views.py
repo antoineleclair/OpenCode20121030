@@ -11,8 +11,8 @@ from .models import (
     )
 
 @view_config(route_name='home', renderer='home.mako', request_method='GET')
-def home(request):    
-    broadcasts = DBSession.query(Broadcast).all()
+def home(request):
+    broadcasts = DBSession.query(Broadcast).order_by('created DESC').all()
     return {'broadcasts': broadcasts}
 
 @view_config(route_name='shout', request_method='POST')
