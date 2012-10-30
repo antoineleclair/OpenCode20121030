@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>DemoAF</h1>
-    <form method="post">
+    <form method="post" action="${request.route_url('shout')}">
         <p>
             <input type="text" name="content"/>
             <input type="submit"/>
